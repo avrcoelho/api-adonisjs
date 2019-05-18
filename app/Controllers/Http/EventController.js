@@ -26,7 +26,7 @@ class EventController {
     let query = Event.query().with('user')
 
     if (date) {
-      query = query.where('when', 'LIKE', `%${date}%`)
+      query = query.whereRaw(`when::date = '${date}'`)
     }
 
     // query: inicia uma query
