@@ -26,7 +26,7 @@ class EventController {
     let query = Event.query().with('user')
 
     if (date) {
-      query = query.whereRaw(`when::date = '${date}'`)
+      query = query.whereRaw("DATE_FORMAT(`when`, '%Y-%m-%d') = ?", date)
     }
 
     // query: inicia uma query
